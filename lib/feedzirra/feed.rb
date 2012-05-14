@@ -285,6 +285,8 @@ module Feedzirra
               feed.feed_url = c.last_effective_url
               feed.etag = etag_from_header(c.header_str)
               feed.last_modified = last_modified_from_header(c.header_str)
+              feed.content_type = content_type_from_header(c.header_str)
+              feed.response_code = response_code(c.response_code)
               responses[url] = feed
               options[:on_success].call(url, feed) if options.has_key?(:on_success)
             rescue Exception => e
@@ -338,6 +340,8 @@ module Feedzirra
             updated_feed.feed_url = c.last_effective_url
             updated_feed.etag = etag_from_header(c.header_str)
             updated_feed.last_modified = last_modified_from_header(c.header_str)
+            updated_feed.content_type = content_type_from_header(c.header_str)
+            updated_feed.response_code = response_code(c.response_code)
             feed.update_from_feed(updated_feed)
             responses[feed.feed_url] = feed
             options[:on_success].call(feed) if options.has_key?(:on_success)
@@ -382,5 +386,27 @@ module Feedzirra
       header =~ /.*Last-Modified:\s(.*)\r/
       Time.parse($1) if $1
     end
+
+    # Determines the content type from the request headers.
+    #
+    # === Parameters
+    # [header<String>] Raw request header returned from the request
+    # === Returns
+    # A string of the content type or nil if it cannot be found in the headers.
+    def self.content_type_from_header(header)
+      header =~ /.*Content-Type:\s(.*)\r/
+      $1
+    end
+
+    # Adds the response code to feed.
+    #
+    # === Parameters
+    # [header<String>] Raw request header returned from the request
+    # === Returns
+    # A the response code.
+    def self.response_code(response_code)
+      response_code
+    end
+
   end
 end
