@@ -15,6 +15,14 @@ module Feedzirra
       element :language
       element :managingEditor
       element :title
+      element :ttl
+      element :cloud
+      element :skip_hours
+      element :skip_days
+      element :complete
+      element :format
+      element :generator
+      element :keywords
       element :link, :as => :url
 
       # If author is not present use managingEditor on the channel
