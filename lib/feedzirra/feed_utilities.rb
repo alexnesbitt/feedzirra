@@ -1,9 +1,9 @@
 module Feedzirra
   module FeedUtilities
-    UPDATABLE_ATTRIBUTES = %w(title feed_url url last_modified etag)
+    UPDATABLE_ATTRIBUTES = %w(title feed_url url last_modified etag response_code content_type)
 
     attr_writer   :new_entries, :updated, :last_modified
-    attr_accessor :etag
+    attr_accessor :etag, :response_code, :content_type
 
     def last_modified
       @last_modified ||= begin

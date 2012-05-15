@@ -283,6 +283,8 @@ module Feedzirra
             begin
               feed = klass.parse(xml, Proc.new{|message| warn "Error while parsing [#{url}] #{message}" })
               feed.feed_url = c.last_effective_url
+              feed.response_code = c.response_code
+              feed.content_type  = c.content_type
               feed.etag = etag_from_header(c.header_str)
               feed.last_modified = last_modified_from_header(c.header_str)
               responses[url] = feed
@@ -336,6 +338,8 @@ module Feedzirra
             add_feed_to_multi(multi, feed_queue.shift, feed_queue, responses, options) unless feed_queue.empty?
             updated_feed = Feed.parse(c.body_str){ |message| warn "Error while parsing [#{feed.feed_url}] #{message}" }
             updated_feed.feed_url = c.last_effective_url
+            updated_feed.response_code = c.response_code
+            updated_feed.content_type  = c.content_type
             updated_feed.etag = etag_from_header(c.header_str)
             updated_feed.last_modified = last_modified_from_header(c.header_str)
             feed.update_from_feed(updated_feed)
