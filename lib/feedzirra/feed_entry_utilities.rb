@@ -40,7 +40,17 @@ module Feedzirra
       self.title.sanitize! if self.title
       self.author.sanitize! if self.author
       self.summary.sanitize! if self.summary
-      self.content.sanitize! if self.content
+      self.description.sanitize! if self.description
+
+      self.guid.sanitize! if self.guid
+
+           # If author is not present use author tag on the item
+      self.itunes_author.sanitize! if self.itunes_author
+      self.itunes_keywords.sanitize! if self.itunes_keywords
+      self.itunes_summary.sanitize! if self.itunes_summary
+      self.enclosure_type.sanitize! if self.enclosure_type
+
+
     end
 
     alias_method :last_modified, :published

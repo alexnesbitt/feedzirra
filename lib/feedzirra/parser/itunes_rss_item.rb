@@ -18,6 +18,7 @@ module Feedzirra
       element :"itunes:author", :as => :itunes_author
       element :"itunes:block", :as => :itunes_block
       element :"itunes:duration", :as => :itunes_duration
+      element :"itunes:image", :value => :href, :as => :itunes_image
       element :"itunes:explicit", :as => :itunes_explicit
       element :"itunes:keywords", :as => :itunes_keywords
       element :"itunes:subtitle", :as => :itunes_subtitle

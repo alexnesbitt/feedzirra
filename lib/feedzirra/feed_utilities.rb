@@ -43,6 +43,34 @@ module Feedzirra
       end
     end
 
+    def sanitize_feed_header!
+      self.copyright.sanitize! if self.copyright
+      self.description.sanitize! if self.description
+      self.language.sanitize! if self.language
+      self.managingEditor.sanitize! if self.managingEditor
+      self.title.sanitize! if self.title
+
+      self.cloud.sanitize! if self.cloud
+      self.skip_hours.sanitize! if self.skip_hours
+      self.skip_days.sanitize! if self.skip_days
+      self.complete.sanitize! if self.complete
+
+      self.generator.sanitize! if self.generator
+      self.keywords.sanitize! if self.keywords
+
+      self.itunes_author.sanitize! if self.itunes_author
+      self.itunes_block.sanitize! if self.itunes_block
+
+      self.itunes_explicit.sanitize! if self.itunes_explicit
+      self.itunes_keywords.sanitize! if self.itunes_keywords
+
+      self.itunes_subtitle.sanitize! if self.itunes_subtitle
+
+      self.itunes_summary.sanitize! if self.itunes_summary
+
+
+    end
+
     def sanitize_entries!
       entries.each {|entry| entry.sanitize!}
     end
