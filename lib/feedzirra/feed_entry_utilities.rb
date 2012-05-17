@@ -40,7 +40,7 @@ module Feedzirra
       self.title.sanitize! if self.title
       self.author.sanitize! if self.author
       self.summary.sanitize! if self.summary
-      self.description.sanitize! if self.description
+
 
       self.guid.sanitize! if self.guid
 
