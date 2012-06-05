@@ -42,14 +42,14 @@ module Feedzirra
       self.summary.sanitize! if self.summary
 
 
-      self.guid.sanitize! if !self.respond_to?('guid')
-      self.entry_id.sanitize if !self.respond_to?('entry_id')
+      self.guid.sanitize! if self.respond_to?('guid')
+      self.entry_id.sanitize if self.respond_to?('entry_id')
 
            # If author is not present use author tag on the item
-      self.itunes_author.sanitize! if !self.respond_to?('itunes_author') 
-      self.itunes_keywords.sanitize! if !self.respond_to?('itunes_keywords') 
-      self.itunes_summary.sanitize! if !self.respond_to?('itunes_summary') 
-      self.enclosure_type.sanitize! if !self.respond_to?('enclosure_type') 
+      self.itunes_author.sanitize! if self.respond_to?('itunes_author') 
+      self.itunes_keywords.sanitize! if self.respond_to?('itunes_keywords') 
+      self.itunes_summary.sanitize! if self.respond_to?('itunes_summary') 
+      self.enclosure_type.sanitize! if self.respond_to?('enclosure_type') 
 
 
     end
