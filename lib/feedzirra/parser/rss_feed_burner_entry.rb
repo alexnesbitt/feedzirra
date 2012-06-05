@@ -28,6 +28,10 @@ module Feedzirra
         elements :category, :as => :categories
 
         element :guid, :as => :entry_id
+        #add enclosure elements
+        element :enclosure, :value => :length, :as => :enclosure_length
+        element :enclosure, :value => :type, :as => :enclosure_type
+        element :enclosure, :value => :url, :as => :enclosure_url
 
         def url
           @url || @link
