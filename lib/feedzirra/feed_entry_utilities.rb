@@ -42,13 +42,13 @@ module Feedzirra
       self.summary.sanitize! if self.summary
 
 
-      self.guid.sanitize! if self.guid
+      self.guid.sanitize! if !self.guid.nil? && self.guid
 
            # If author is not present use author tag on the item
-      self.itunes_author.sanitize! if self.itunes_author
-      self.itunes_keywords.sanitize! if self.itunes_keywords
-      self.itunes_summary.sanitize! if self.itunes_summary
-      self.enclosure_type.sanitize! if self.enclosure_type
+      self.itunes_author.sanitize! if !self.itunes_author.nil? && self.itunes_author
+      self.itunes_keywords.sanitize! if !self.itunes_keywords.nil? && self.itunes_keywords
+      self.itunes_summary.sanitize! if !self.itunes_summary.nil? && self.itunes_summary
+      self.enclosure_type.sanitize! if !self.enclosure_type.nil? && self.enclosure_type
 
 
     end
