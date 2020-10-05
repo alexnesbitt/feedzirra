@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'nokogiri',          '~> 1.9.1'
   s.add_dependency 'sax-machine',       '~> 1.3.2'
-  s.add_dependency 'curb',              '~> 0.8.8'
+  s.add_dependency 'curb',              '~> 0.9.10'
   s.add_dependency 'loofah',            '~> 1.2.1'
 
 
